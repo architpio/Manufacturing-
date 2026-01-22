@@ -1,0 +1,14 @@
+                R MFG5WO
+                  WOID           6P 0       COLHDG('WORKORDER ID')
+                                            TEXT('UNIQUE WORK ORDER ID')
+                  WOPRD          6P 0       COLHDG('WORKORDER PRODUCTID')
+                                            TEXT('PRODUCT LINKED TO WO')
+                  WOSTD           L         COLHDG('WORKORDER START DATE')
+                                            TEXT('START DATE OF WO')
+                  WOEND           L         COLHDG('WORKORDER END DATE')
+                                            TEXT('END DATE OF WO')
+                  WOQTY          3P 0       COLHDG('WORKORDER  QUANTITY')
+                                            TEXT('QUANTITY FOR WO')
+                  WOSTA          1A         COLHDG('WORKORDER STATUS')
+                                            TEXT('STATUS OF WO')
+                K WOID

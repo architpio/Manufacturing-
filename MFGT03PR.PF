@@ -1,0 +1,14 @@
+                R MFG3PRO
+                  PRID           6P 0       COLHDG('PRODUCT ID')
+                                            TEXT('UNIQUE ID FOR THE PRODUCT')
+                  PRNAM         30A         COLHDG('PRODUCT NAME')
+                                            TEXT('NAME OF THE PRODUCT')
+                  PRCAT         20A         COLHDG('PRODUCT CATEGORY')
+                                            TEXT('CATEGORY OF PRODUCT')
+                  PRSTA          1A         COLHDG('PRODUCT STATUS')
+                                            TEXT('STATUS OF THE PRODUCT')
+                  PRUSR          6P 0       COLHDG('PRODUCT USERID')
+                                            TEXT('USER ASSOCIATED WITH PRODUCT')
+                  PRLOC          6P 0       COLHDG('PRODUCT LOCATION')
+                                            TEXT('PRODUCT CREATION ON LOCATION')
+                K PRID

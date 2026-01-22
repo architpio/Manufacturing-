@@ -1,0 +1,14 @@
+                R MFG3BO
+                  BOID           6P 0       COLHDG('BOM ID')
+                                            TEXT('UNIQUE BOM IDENTIFIER')
+                  BOPRD          6P 0       COLHDG('BOM PRODUCT ID')
+                                            TEXT('PRODUCT LINKED TO BOM')
+                  BOCOID         6P 0       COLHDG('BOM COMPONENT ID')
+                                            TEXT('COMPONENT IN BOM')
+                  BOQTY          3P 0       COLHDG('BOM QUANTITY')
+                                            TEXT('COMPONENT QUANTITY')
+                  BOSAT          1A         COLHDG('BOM STATUS')
+                                            TEXT('ACTIVE OR INACTIVE')
+                  BODEL          1A         COLHDG('BOM DELETE')
+                                            TEXT('DELETE FLAG')
+                K BOID
