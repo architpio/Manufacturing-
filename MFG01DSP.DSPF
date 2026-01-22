@@ -1,0 +1,775 @@
+     A*%%TS  SD  20260122  113723  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A          R HEADER
+     A*%%TS  SD  20260121  101635  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                  1  2'User...:'
+     A                                      COLOR(WHT)
+     A                                  1 11USER
+     A            FLD001        32   O  1 25COLOR(BLU)
+     A                                  1 67'Date:'
+     A                                      COLOR(WHT)
+     A                                  1 73DATE
+     A                                      EDTCDE(Y)
+     A                                  2 67'Time:'
+     A                                      COLOR(WHT)
+     A                                  2 73TIME
+     A            FLD002        25   O  2 28COLOR(WHT)
+     A                                  2  2'Program:'
+     A                                      COLOR(WHT)
+     A            FLD003        10   O  2 11
+     A          R FOOTER
+     A*%%TS  SD  20260121  103001  ARCHIT      REL-V7R5M0  5770-WDS
+     A            FLD001        65A  O 23  1COLOR(BLU)
+     A            FLD002        50   O 24  1COLOR(RED)
+     A          R LOGIN
+     A*%%TS  SD  20260122  111449  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                  8 31'User Id.'
+     A                                      COLOR(WHT)
+     A                                 10 31'Password'
+     A                                      COLOR(WHT)
+     A            FLD001         6S 0B  8 40
+     A  13                                  DSPATR(RI)
+     A            FLD002        20A  B 10 40
+     A                                 13 36'**********'
+     A                                      COLOR(WHT)
+     A                                 14 38'IBM I'
+     A                                      COLOR(WHT)
+     A                                 15 36'**********'
+     A                                      COLOR(WHT)
+     A          R HOME
+     A*%%TS  SD  20260122  111449  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                  7 26'Type Choice, Press Enter'
+     A                                      COLOR(WHT)
+     A            FLD001        30A  O  9 28
+     A            FLD002        30A  O 10 28
+     A            FLD003        30A  O 11 28
+     A            FLD004        30A  O 12 28
+     A            FLD005        30A  O 13 28
+     A            FLD006        30A  O 14 28
+     A            FLD010        30A  O 15 28
+     A                                 17 26'Enter Choice:'
+     A                                      COLOR(WHT)
+     A            FLD011         2S 0B 17 40
+     A  14                                  DSPATR(RI)
+     A          R EMPCRUD
+     A*%%TS  SD  20260122  111449  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                  7  2'Employee ID.....'
+     A                                      COLOR(WHT)
+     A                                  9  2'Employee Gender.'
+     A                                      COLOR(WHT)
+     A                                 11  2'Employee DOB....'
+     A                                      COLOR(WHT)
+     A                                 13  2'Employee Role...'
+     A                                      COLOR(WHT)
+     A                                 21  2'Employee State..'
+     A                                      COLOR(WHT)
+     A                                 17  2'Employee Address'
+     A                                      COLOR(WHT)
+     A                                 19  2'Employee Email..'
+     A                                      COLOR(WHT)
+     A                                 15  2'Employee Mobile.'
+     A                                      COLOR(WHT)
+     A            FLD001         6S 0O  7 19
+     A            FLD002         1A  B  9 19
+     A  15                                  DSPATR(RI)
+     A  15                                  DSPATR(PC)
+     A  26                                  DSPATR(UL)
+     A            FLD003        10A  B 11 19
+     A  16                                  DSPATR(RI)
+     A                                      DSPATR(PC)
+     A  26                                  DSPATR(UL)
+     A            FLD004         1A  B 13 19
+     A  17                                  DSPATR(RI)
+     A  17                                  DSPATR(PC)
+     A  26                                  DSPATR(UL)
+     A            FLD006        20A  B 21 19
+     A  21                                  DSPATR(RI)
+     A  21                                  DSPATR(PC)
+     A  26                                  DSPATR(UL)
+     A            FLD007        50A  B 17 19
+     A  19                                  DSPATR(RI)
+     A  19                                  DSPATR(PC)
+     A  26                                  DSPATR(UL)
+     A            FLD008        30A  B 19 19
+     A  20                                  DSPATR(RI)
+     A  20                                  DSPATR(PC)
+     A  26                                  DSPATR(UL)
+     A            FLD009        10S 0B 15 19
+     A  18                                  DSPATR(RI)
+     A  18                                  DSPATR(PC)
+     A  26                                  DSPATR(UL)
+     A                                  7 37'Employee Name....'
+     A                                      COLOR(WHT)
+     A                                  9 37'Employee Age.....'
+     A                                      COLOR(WHT)
+     A                                 11 37'Employee Pincode.'
+     A                                      COLOR(WHT)
+     A                                 13 37'Employee Doj.....'
+     A                                      COLOR(WHT)
+     A                                 15 37'Employee Password'
+     A                                      COLOR(WHT)
+     A            FLD011        20A  B  7 55
+     A  22                                  DSPATR(RI)
+     A  22                                  DSPATR(PC)
+     A  26                                  DSPATR(UL)
+     A            FLD012         2  0O  9 55
+     A            FLD013         6S 0B 11 55
+     A  23                                  DSPATR(RI)
+     A  23                                  DSPATR(PC)
+     A  26                                  DSPATR(UL)
+     A            FLD014        10A  B 13 55
+     A  24                                  DSPATR(RI)
+     A  24                                  DSPATR(PC)
+     A  26                                  DSPATR(UL)
+     A            FLD015        20A  B 15 55
+     A  25                                  DSPATR(RI)
+     A  25                                  DSPATR(PC)
+     A  27                                  DSPATR(UL)
+     A                                  9 23'(F4=Prompt)'
+     A                                      COLOR(WHT)
+     A                                 13 23'(F4=Prompt)'
+     A                                      COLOR(WHT)
+     A                                 21 41'(F4=Prompt)'
+     A                                      COLOR(WHT)
+     A          R MNGSEMP                   SFL
+     A*%%TS  SD  20260122  113723  ARCHIT      REL-V7R5M0  5770-WDS
+     A            FLD001         1A  B 11  2
+     A  28                                  DSPATR(RI)
+     A  28                                  DSPATR(PC)
+     A            FLD003         6A  O 11  9
+     A            FLD004        20A  O 11 25
+     A            FLD006         1A  O 11 48
+     A            FLD007         1A  O 11 69
+     A          R MNGCEMP                   SFLCTL(MNGSEMP)
+     A*%%TS  SD  20260121  110238  ARCHIT      REL-V7R5M0  5770-WDS
+     A  50                                  SFLDSP
+     A  51                                  SFLDSPCTL
+     A  52                                  SFLDLT
+     A  53                                  SFLEND(*MORE)
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0010)
+     A                                  6 52'Position To....'
+     A            FLD002         6  0B  6 68
+     A                                  7  2'Type Options, Press Enter'
+     A                                      COLOR(BLU)
+     A            FLD003        35   O  8  4COLOR(BLU)
+     A                                 10  2'OPT'
+     A                                      COLOR(WHT)
+     A                                 10  9'Employee Id'
+     A                                      COLOR(WHT)
+     A                                 10 25'Employee Name'
+     A                                      COLOR(WHT)
+     A                                 10 48'Employee Category'
+     A                                      COLOR(WHT)
+     A                                 10 69'Status'
+     A                                      COLOR(WHT)
+     A          R MNGSLOC                   SFL
+     A*%%TS  SD  20260122  113723  ARCHIT      REL-V7R5M0  5770-WDS
+     A            FLD001         1A  B 11  2
+     A  28                                  DSPATR(RI)
+     A  28                                  DSPATR(PC)
+     A            FLD002         6A  O 11  9
+     A            FLD003        30A  O 11 25
+     A            FLD004         1A  O 11 61
+     A          R MNGCLOC                   SFLCTL(MNGSLOC)
+     A*%%TS  SD  20260121  112401  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0010)
+     A  54                                  SFLDSP
+     A  55                                  SFLDSPCTL
+     A  56                                  SFLCLR
+     A  57                                  SFLEND(*MORE)
+     A                                  6 52'Position To....'
+     A            FLD002         6S 0B  6 68
+     A                                  7  2'Type Options, Press Enter'
+     A                                      COLOR(BLU)
+     A            FLD003        35A  O  8  4COLOR(BLU)
+     A                                 10  2'OPT'
+     A                                      COLOR(WHT)
+     A                                 10  9'Location Id'
+     A                                      COLOR(WHT)
+     A                                 10 25'Location Name'
+     A                                      COLOR(WHT)
+     A                                 10 61'Status'
+     A                                      COLOR(WHT)
+     A          R LOCCRUD
+     A*%%TS  SD  20260122  113723  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                  7 27'Location  Id....'
+     A                                      COLOR(WHT)
+     A                                  9 27'Location Name...'
+     A                                      COLOR(WHT)
+     A                                 11 27'Location Pincode'
+     A                                      COLOR(WHT)
+     A                                 13 27'Location State..'
+     A                                      COLOR(WHT)
+     A                                 15 27'Location Status.'
+     A                                      COLOR(WHT)
+     A            FLD001         6S 0O  7 44
+     A            FLD002        30A  B  9 44
+     A  15                                  DSPATR(RI)
+     A  26                                  DSPATR(UL)
+     A  15                                  DSPATR(PC)
+     A            FLD003         6S 0B 11 44
+     A  16                                  DSPATR(RI)
+     A  26                                  DSPATR(UL)
+     A  16                                  DSPATR(PC)
+     A            FLD004        20A  B 13 44
+     A  17                                  DSPATR(RI)
+     A  26                                  DSPATR(UL)
+     A  17                                  DSPATR(PC)
+     A            FLD005         1A  B 15 44
+     A  18                                  DSPATR(RI)
+     A  26                                  DSPATR(UL)
+     A  18                                  DSPATR(PC)
+     A                                 15 49'(F4=Prompt)'
+     A                                      COLOR(BLU)
+     A          R MNGSPRO                   SFL
+     A*%%TS  SD  20260122  113723  ARCHIT      REL-V7R5M0  5770-WDS
+     A            FLD001         1A  B 11  2
+     A  28                                  DSPATR(RI)
+     A  28                                  DSPATR(PC)
+     A            FLD002         6A  O 11  7
+     A            FLD003        30A  O 11 20
+     A            FLD004        20A  O 11 53
+     A            FLD005         1A  O 11 76
+     A          R MNGCPRO                   SFLCTL(MNGSPRO)
+     A*%%TS  SD  20260122  113723  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0010)
+     A  58                                  SFLDSP
+     A  59                                  SFLDSPCTL
+     A  60                                  SFLCLR
+     A  61                                  SFLEND(*MORE)
+     A                                  6 52'Position To....'
+     A            FLD002         6S 0B  6 68
+     A                                  7  2'Type Options, Press Enter'
+     A                                      COLOR(BLU)
+     A            FLD003        35A  O  8  4COLOR(BLU)
+     A                                 10  2'OPT'
+     A                                      COLOR(WHT)
+     A                                 10  7'Product Id'
+     A                                      COLOR(WHT)
+     A                                 10 20'Product Name'
+     A                                      COLOR(WHT)
+     A                                 10 74'Status'
+     A                                      COLOR(WHT)
+     A                                 10 53'Product Category'
+     A                                      COLOR(WHT)
+     A                                  4  2'Product Name....'
+     A                                      COLOR(WHT)
+     A                                  5  2'Product Category'
+     A                                      COLOR(WHT)
+     A            FLD001        30A  B  4 19
+     A            FLD004        20A  B  5 19
+     A          R PROCRUD
+     A*%%TS  SD  20260122  113723  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                  7 11'Product Id.........'
+     A                                      COLOR(WHT)
+     A                                  9 11'Product Name.......'
+     A                                      COLOR(WHT)
+     A                                 11 11'Product Type.......'
+     A                                      COLOR(WHT)
+     A                                 13 11'Product Status.....'
+     A                                      COLOR(WHT)
+     A                                 15 11'Location Id........'
+     A                                      COLOR(WHT)
+     A                                 17 11'Product Description'
+     A                                      COLOR(WHT)
+     A                                 19 11'Created By.........'
+     A                                      COLOR(WHT)
+     A            FLD001         6A  O  7 31
+     A            FLD003        30A  B  9 31
+     A  15                                  DSPATR(RI)
+     A  26                                  DSPATR(UL)
+     A  15                                  DSPATR(PC)
+     A            FLD004        20A  B 11 31
+     A  16                                  DSPATR(RI)
+     A  26                                  DSPATR(UL)
+     A  16                                  DSPATR(PC)
+     A            FLD005         1A  B 13 31
+     A  17                                  DSPATR(RI)
+     A  26                                  DSPATR(UL)
+     A  17                                  DSPATR(PC)
+     A            FLD006         6A  B 15 31
+     A  18                                  DSPATR(RI)
+     A  26                                  DSPATR(UL)
+     A  18                                  DSPATR(PC)
+     A            FLD007        50A  B 17 31
+     A  19                                  DSPATR(RI)
+     A  26                                  DSPATR(UL)
+     A  19                                  DSPATR(PC)
+     A            FLD008         6S 0B 19 31
+     A  20                                  DSPATR(RI)
+     A  27                                  DSPATR(UL)
+     A  20                                  DSPATR(PC)
+     A                                 15 41'(F4=Prompt)'
+     A                                      COLOR(BLU)
+     A                                 13 37'(F4=Prompt)'
+     A                                      COLOR(BLU)
+     A          R MNGSBOM                   SFL
+     A*%%TS  SD  20260122  113723  ARCHIT      REL-V7R5M0  5770-WDS
+     A            FLD001         1A  B 11  2
+     A  28                                  DSPATR(RI)
+     A  28                                  DSPATR(PC)
+     A            FLD002         6A  O 11 10
+     A            FLD003         6A  O 11 25
+     A            FLD004         3S 0O 11 36
+     A            FLD005         1A  O 11 49
+     A          R MNGCBOM                   SFLCTL(MNGSBOM)
+     A*%%TS  SD  20260121  120514  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0010)
+     A  62                                  SFLDSP
+     A  63                                  SFLDSPCTL
+     A  64                                  SFLCLR
+     A  65                                  SFLEND(*MORE)
+     A                                  6 52'Position To....'
+     A            FLD002         6S 0B  6 68
+     A                                  7  2'Type Options, Press Enter'
+     A                                      COLOR(BLU)
+     A            FLD003        35A  O  8  4COLOR(BLU)
+     A                                 10  2'OPT'
+     A                                      COLOR(WHT)
+     A                                 10 10'Product Id'
+     A                                      COLOR(WHT)
+     A                                 10 25'Bom Id'
+     A                                      COLOR(WHT)
+     A                                 10 49'Status'
+     A                                      COLOR(WHT)
+     A                                 10 36'Quantity'
+     A                                      COLOR(WHT)
+     A          R BOMCRUD
+     A*%%TS  SD  20260122  113723  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                  7 27'Bom Id......'
+     A                                      COLOR(WHT)
+     A                                  9 27'Product Id..'
+     A                                      COLOR(WHT)
+     A                                 11 27'Component Id'
+     A                                      COLOR(WHT)
+     A                                 13 27'Quantity....'
+     A                                      COLOR(WHT)
+     A                                 15 27'Bom Status..'
+     A                                      COLOR(WHT)
+     A            FLD001         6A  O  7 40
+     A            FLD002         6A  B  9 40
+     A  15                                  DSPATR(RI)
+     A  26                                  DSPATR(UL)
+     A  15                                  DSPATR(PC)
+     A            FLD003         6A  B 11 40
+     A  16                                  DSPATR(RI)
+     A  26                                  DSPATR(UL)
+     A  16                                  DSPATR(PC)
+     A            FLD004         3S 0B 13 40
+     A  17                                  DSPATR(RI)
+     A  26                                  DSPATR(UL)
+     A  17                                  DSPATR(PC)
+     A            FLD005         1A  B 15 40
+     A  18                                  DSPATR(RI)
+     A  26                                  DSPATR(UL)
+     A  18                                  DSPATR(PC)
+     A                                 15 45'(F4=Prompt)'
+     A                                      COLOR(WHT)
+     A                                 11 50'(F4=Prompt)'
+     A                                      COLOR(WHT)
+     A                                  9 50'(F4=Prompt)'
+     A                                      COLOR(WHT)
+     A          R MNGSWO                    SFL
+     A*%%TS  SD  20260122  113723  ARCHIT      REL-V7R5M0  5770-WDS
+     A            FLD001         1A  B 11  2
+     A  28                                  DSPATR(RI)
+     A  28                                  DSPATR(PC)
+     A            FLD002         6A  O 11 10
+     A            FLD003         6A  O 11 27
+     A            FLD004        10A  O 11 42
+     A            FLD005        10A  O 11 57
+     A            FLD006         1A  O 11 70
+     A          R MNGCWO                    SFLCTL(MNGSWO)
+     A*%%TS  SD  20260121  120514  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0010)
+     A  66                                  SFLDSP
+     A  67                                  SFLDSPCTL
+     A  68                                  SFLCLR
+     A  69                                  SFLEND(*MORE)
+     A                                  6 52'Position To....'
+     A            FLD002         6S 0B  6 68
+     A                                  7  2'Type Options, Press Enter'
+     A                                      COLOR(BLU)
+     A            FLD003        35A  O  8  4COLOR(BLU)
+     A                                 10  2'OPT'
+     A                                      COLOR(WHT)
+     A                                 10 10'Workorder Id'
+     A                                      COLOR(WHT)
+     A                                 10 27'Prodcut Id'
+     A                                      COLOR(WHT)
+     A                                 10 57'End Date'
+     A                                      COLOR(WHT)
+     A                                 10 42'Start Date'
+     A                                      COLOR(WHT)
+     A                                  4  2'Start Date'
+     A                                      COLOR(WHT)
+     A                                  5  2'End Date..'
+     A                                      COLOR(WHT)
+     A                                 10 70'Status'
+     A                                      COLOR(WHT)
+     A            FLD001        10   B  4 13
+     A            FLD004        10   B  5 13
+     A          R CRUDWO
+     A*%%TS  SD  20260121  120514  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                  7 27'WorkOrder Id'
+     A                                      COLOR(WHT)
+     A                                  9 27'Product Id..'
+     A                                      COLOR(WHT)
+     A                                 11 27'Start Date..'
+     A                                      COLOR(WHT)
+     A                                 13 27'End Date....'
+     A                                      COLOR(WHT)
+     A                                 15 27'Quantity....'
+     A                                      COLOR(WHT)
+     A                                 17 27'Status......'
+     A                                      COLOR(WHT)
+     A            FLD001         6   O  7 40
+     A            FLD002         6   B  9 40
+     A            FLD003        10   B 11 40
+     A            FLD004        10   B 13 40
+     A            FLD005         3  0B 15 40
+     A            FLD006         1   B 17 40
+     A          R MNGSINV                   SFL
+     A*%%TS  SD  20260122  113723  ARCHIT      REL-V7R5M0  5770-WDS
+     A            FLD001         1A  B 11  2
+     A  28                                  DSPATR(RI)
+     A  28                                  DSPATR(PC)
+     A            FLD002         6A  O 11 10
+     A            FLD003         3S 0O 11 21
+     A            FLD005        10A  O 11 34
+     A            FLD006         1A  O 11 49
+     A          R MNGCINV                   SFLCTL(MNGSINV)
+     A*%%TS  SD  20260121  123042  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0010)
+     A  70                                  SFLDSP
+     A  71                                  SFLDSPCTL
+     A  72                                  SFLCLR
+     A  73                                  SFLEND(*MORE)
+     A                                  6 52'Position To....'
+     A            FLD002         6S 0B  6 68
+     A                                  7  2'Type Options, Press Enter'
+     A                                      COLOR(BLU)
+     A            FLD003        35A  O  8  4COLOR(BLU)
+     A                                 10  2'OPT'
+     A                                      COLOR(WHT)
+     A                                 10 10'Mom Id'
+     A                                      COLOR(WHT)
+     A                                 10 21'Quantity'
+     A                                      COLOR(WHT)
+     A                                 10 34'Date'
+     A                                      COLOR(WHT)
+     A                                  4  2'Date'
+     A                                      COLOR(WHT)
+     A                                 10 49'Status'
+     A                                      COLOR(WHT)
+     A            FLD001        10   B  4  7
+     A          R INVCRUD
+     A*%%TS  SD  20260122  113723  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                  7 27'Mom Id......'
+     A                                      COLOR(WHT)
+     A                                  9 27'WorkOrder Id'
+     A                                      COLOR(WHT)
+     A                                 11 27'Component Id'
+     A                                      COLOR(WHT)
+     A                                 13 27'Date........'
+     A                                      COLOR(WHT)
+     A                                 15 27'Mom Type....'
+     A                                      COLOR(WHT)
+     A                                 17 27'Quantity....'
+     A                                      COLOR(WHT)
+     A                                 19 27'Status......'
+     A                                      COLOR(WHT)
+     A            FLD001         6A  O  7 40
+     A            FLD002         6A  B  9 40
+     A  15                                  DSPATR(RI)
+     A  15                                  DSPATR(PC)
+     A            FLD003         6A  B 11 40
+     A  16                                  DSPATR(RI)
+     A  16                                  DSPATR(PC)
+     A            FLD004        10A  B 13 40
+     A  17                                  DSPATR(RI)
+     A  17                                  DSPATR(PC)
+     A            FLD005         1A  B 15 40
+     A  18                                  DSPATR(RI)
+     A  18                                  DSPATR(PC)
+     A            FLD006         3S 0B 17 40
+     A  19                                  DSPATR(RI)
+     A  19                                  DSPATR(UL)
+     A            FLD007         1A  B 19 40
+     A  20                                  DSPATR(RI)
+     A  20                                  DSPATR(PC)
+     A          R STAWIN
+     A*%%TS  SD  20260122  113723  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      WINDOW(6 24 12 30)
+     A                                  1 10'Select Status'
+     A                                      COLOR(BLU)
+     A                                  3  3'Type Options, Press Enter'
+     A                                      COLOR(BLU)
+     A            FLD001        20A  O  5  6COLOR(WHT)
+     A                                  6  7'1. Active'
+     A                                  7  7'2. Inactive'
+     A                                  9  7'Enter Choice'
+     A                                      COLOR(WHT)
+     A            FLD002         1A  B  9 20
+     A  14                                  DSPATR(RI)
+     A  14                                  DSPATR(PC)
+     A          R PROTWIN
+     A*%%TS  SD  20260121  123042  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      WINDOW(6 24 12 30)
+     A                                  1  7'Select Product Type'
+     A                                      COLOR(BLU)
+     A                                  3  4'Type Options,Press Enter'
+     A                                      COLOR(BLU)
+     A                                  5  9'Product Status'
+     A                                      COLOR(WHT)
+     A                                  6 10'1. Completed'
+     A                                  7 10'2. Raw Material'
+     A                                  8 10'3. Semi Completed'
+     A                                 10  9'Enter Choice'
+     A                                      COLOR(WHT)
+     A            FLD001         1   B 10 22
+     A          R WOSWIN
+     A*%%TS  SD  20260121  123042  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      WINDOW(6 24 12 30)
+     A                                  1  5'Select WorkOrder Status'
+     A                                      COLOR(BLU)
+     A                                  3  3'Type Options,Press Enter'
+     A                                      COLOR(BLU)
+     A                                  5  7'WorkOrder Status'
+     A                                      COLOR(WHT)
+     A                                  6  9'1. Planned'
+     A                                  7  9'2. In-Progress'
+     A                                  8  9'3. Completed'
+     A                                 10  7'Enter Choice'
+     A                                      COLOR(WHT)
+     A            FLD001         1   B 10 20
+     A          R MOMTWIN
+     A*%%TS  SD  20260122  113723  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      WINDOW(6 24 12 30)
+     A                                  1  8'Select Mom Status'
+     A                                      COLOR(BLU)
+     A                                  3  4'Type Options,Press Enter'
+     A                                      COLOR(BLU)
+     A                                  5  9'Mom Status'
+     A                                      COLOR(WHT)
+     A                                  6 11'1. Issued'
+     A                                  7 11'2. Receipt'
+     A                                  9  9'Enter Choice'
+     A                                      COLOR(WHT)
+     A            FLD001         1A  B  9 23DSPATR(RI)
+     A                                      DSPATR(PC)
+     A          R PROSWIN                   SFL
+     A*%%TS  SD  20260122  113723  ARCHIT      REL-V7R5M0  5770-WDS
+     A            FLD001         1A  B  7  2
+     A  28                                  DSPATR(RI)
+     A  28                                  DSPATR(PC)
+     A            FLD002         6A  O  7  9
+     A            FLD003        30A  O  7 21
+     A          R PROCWIN                   SFLCTL(PROSWIN)
+     A*%%TS  SD  20260122  063457  ARCHIT      REL-V7R5M0  5770-WDS
+     A  74                                  SFLDSP
+     A  75                                  SFLDSPCTL
+     A  76                                  SFLCLR
+     A  77                                  SFLEND(*MORE)
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0010)
+     A                                      WINDOW(3 18 18 50)
+     A                                  1 19'Select Product '
+     A                                      COLOR(BLU)
+     A                                  3  2'Type Option,Press Enter'
+     A                                      COLOR(BLU)
+     A                                  4  4'X=Select'
+     A                                      COLOR(BLU)
+     A                                  6  2'OPT'
+     A                                      COLOR(WHT)
+     A                                  6  9'ProductId'
+     A                                      COLOR(WHT)
+     A                                  6 21'ProductName'
+     A                                      COLOR(WHT)
+     A          R COMPSWIN                  SFL
+     A*%%TS  SD  20260122  113723  ARCHIT      REL-V7R5M0  5770-WDS
+     A            FLD001         1A  B  7  2
+     A  28                                  DSPATR(RI)
+     A  28                                  DSPATR(PC)
+     A            FLD002         6A  O  7 10
+     A            FLD003        30A  O  7 25
+     A          R COMPCWIN                  SFLCTL(COMPSWIN)
+     A*%%TS  SD  20260122  063457  ARCHIT      REL-V7R5M0  5770-WDS
+     A  78                                  SFLDSP
+     A  79                                  SFLDSPCTL
+     A  80                                  SFLCLR
+     A  81                                  SFLEND(*MORE)
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0010)
+     A                                      WINDOW(3 18 19 55)
+     A                                  1 18'Select Component'
+     A                                      COLOR(BLU)
+     A                                  3  2'Type Options,Press Enter'
+     A                                      COLOR(BLU)
+     A                                  4  4'X=Select'
+     A                                      COLOR(BLU)
+     A                                  6  2'OPT'
+     A                                      COLOR(WHT)
+     A                                  6 10'ComponentId'
+     A                                      COLOR(WHT)
+     A                                  6 29'ComponentName'
+     A                                      COLOR(WHT)
+     A          R WORKSWIN                  SFL
+     A*%%TS  SD  20260122  063457  ARCHIT      REL-V7R5M0  5770-WDS
+     A            FLD001         1   B  7  2
+     A            FLD002         6   O  7 13
+     A          R WORKCWIN                  SFLCTL(WORKSWIN)
+     A*%%TS  SD  20260122  063457  ARCHIT      REL-V7R5M0  5770-WDS
+     A  82                                  SFLDSP
+     A  83                                  SFLDSPCTL
+     A  84                                  SFLCLR
+     A  85                                  SFLEND(*MORE)
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0010)
+     A                                      WINDOW(3 18 19 30)
+     A                                  1  8'Select WorkOrder'
+     A                                      COLOR(BLU)
+     A                                  3  1'Type Options,Press Enter'
+     A                                      COLOR(BLU)
+     A                                  4  3'X=Select'
+     A                                      COLOR(BLU)
+     A                                  6  2'OPT'
+     A                                      COLOR(WHT)
+     A                                  6 13'WOID'
+     A                                      COLOR(WHT)
+     A          R MOMSWIN
+     A*%%TS  SD  20260122  090322  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      WINDOW(6 24 12 30)
+     A                                  1  8'Select Mom Status'
+     A                                      COLOR(BLU)
+     A                                  3  4'Type Options,Press Enter'
+     A                                      COLOR(BLU)
+     A                                  5  9'Mom Status'
+     A                                      COLOR(WHT)
+     A                                  6 11'1. Pending'
+     A                                  7 11'2. Completed'
+     A                                  9  9'Enter Choice'
+     A                                      COLOR(WHT)
+     A            FLD001         1A  B  9 23
+     A          R PRODSDEL                  SFL
+     A*%%TS  SD  20260122  104401  ARCHIT      REL-V7R5M0  5770-WDS
+     A            FLD001         6   O 11  3
+     A            FLD002        30   O 11 18
+     A            FLD003        20   O 11 53
+     A          R PRODCDEL                  SFLCTL(PRODSDEL)
+     A*%%TS  SD  20260122  104401  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0010)
+     A  86                                  SFLDSP
+     A  87                                  SFLDSPCTL
+     A  88                                  SFLCLR
+     A  89                                  SFLEND(*MORE)
+     A                                  7  2'Press Enter to confirm your choice-
+     A                                      s for Delete.'
+     A                                      COLOR(BLU)
+     A                                  8  2'Press F12=Cancel to return to your-
+     A                                       choices'
+     A                                      COLOR(BLU)
+     A                                 10 53'Product Category'
+     A                                      COLOR(WHT)
+     A                                 10  3'Product Id'
+     A                                      COLOR(WHT)
+     A                                 10 33' '
+     A                                 10 18'Product Name'
+     A                                      COLOR(WHT)
+     A          R BOMSDEL                   SFL
+     A*%%TS  SD  20260122  105100  ARCHIT      REL-V7R5M0  5770-WDS
+     A            FLD001         6   O 11  3
+     A            FLD002         6   O 11 17
+     A            FLD003         3  0O 11 37
+     A          R BOMCDEL                   SFLCTL(BOMSDEL)
+     A*%%TS  SD  20260122  105100  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0010)
+     A  90                                  SFLDSP
+     A  91                                  SFLDSPCTL
+     A  92                                  SFLCLR
+     A  93                                  SFLEND(*MORE)
+     A                                  7  2'Press Enter to confirm your choice-
+     A                                      s for Delete.'
+     A                                      COLOR(BLU)
+     A                                  8  2'Press F12=Cancel to return to your-
+     A                                       choices'
+     A                                      COLOR(BLU)
+     A                                 10  3'Bom Id'
+     A                                      COLOR(WHT)
+     A                                 10 17'Product Id'
+     A                                      COLOR(WHT)
+     A                                 10 37'Qunatity'
+     A                                      COLOR(WHT)
+     A          R WORKSDEL                  SFL
+     A*%%TS  SD  20260122  105509  ARCHIT      REL-V7R5M0  5770-WDS
+     A            FLD001         6   O 11  3
+     A            FLD002         6   O 11 17
+     A            FLD003        20   O 11 37
+     A          R WORKCDEL                  SFLCTL(WORKSDEL)
+     A*%%TS  SD  20260122  105509  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0010)
+     A  94                                  SFLDSP
+     A  95                                  SFLDSPCTL
+     A  96                                  SFLCLR
+     A  97                                  SFLEND(*MORE)
+     A                                  7  2'Press Enter to confirm your choice-
+     A                                      s for Delete.'
+     A                                      COLOR(BLU)
+     A                                  8  2'Press F12=Cancel to return to your-
+     A                                       choices'
+     A                                      COLOR(BLU)
+     A                                 10  3'Wo Id'
+     A                                      COLOR(WHT)
+     A                                 10 17'Product Id'
+     A                                      COLOR(WHT)
+     A                                 10 37'Category'
+     A                                      COLOR(WHT)
+     A          R INVSDEL                   SFL
+     A*%%TS  SD  20260122  110025  ARCHIT      REL-V7R5M0  5770-WDS
+     A            FLD001         6   O 11  3
+     A            FLD002        10   O 11 17
+     A            FLD003        10   O 11 37
+     A          R INVCDEL                   SFLCTL(INVSDEL)
+     A*%%TS  SD  20260122  110025  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0010)
+     A                                      SFLDSP
+     A                                  7  2'Press Enter to confirm your choice-
+     A                                      s for Delete.'
+     A                                      COLOR(BLU)
+     A                                  8  2'Press F12=Cancel to return to your-
+     A                                       choices'
+     A                                      COLOR(BLU)
+     A                                 10  3'Mom Id'
+     A                                      COLOR(WHT)
+     A                                 10 17'Date'
+     A                                      COLOR(WHT)
+     A                                 10 37'Status'
+     A                                      COLOR(WHT)
+     A          R STOCKCRUD
+     A*%%TS  SD  20260122  110132  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                  7 24'Product Id....'
+     A                                      COLOR(WHT)
+     A                                  9 24'Product Name..'
+     A                                      COLOR(WHT)
+     A                                 11 24'Product Type..'
+     A                                      COLOR(WHT)
+     A                                 13 24'Product Status'
+     A                                      COLOR(WHT)
+     A                                 15 24'Stock Count...'
+     A                                      COLOR(WHT)
+     A            FLD001         6   O  7 39
+     A            FLD002        30   O  9 39
+     A            FLD003        20   O 11 39
+     A            FLD004         1   O 13 39
+     A            FLD005         3  0B 15 39
