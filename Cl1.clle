@@ -1,0 +1,27 @@
+             PGM
+             CRTSQLRPGI OBJ(ARCHIT2/MFGADRPG1) +
+                          SRCFILE(ARCHIT2/QDDSSRC) +
+                          SRCMBR(MFGADRPG1) OBJTYPE(*MODULE) +
+                          DBGVIEW(*SOURCE)
+
+
+             CRTSQLRPGI OBJ(ARCHIT2/MFGADRPG2) +
+                          SRCFILE(ARCHIT2/QDDSSRC) +
+                          SRCMBR(MFGADRPG2) OBJTYPE(*MODULE) +
+                          DBGVIEW(*SOURCE)
+
+
+             CRTSQLRPGI OBJ(ARCHIT2/MFGAPRPG3) +
+                          SRCFILE(ARCHIT2/QDDSSRc) +
+                          SRCMBR(MFGAPRPG3) OBJTYPE(*MODULE) +
+                          DBGVIEW(*SOURCE)
+             CRTSQLRPGI OBJ(ARCHIT2/MFGSTARPG4) +
+                          SRCFILE(ARCHIT2/Qddssrc) +
+                          SRCMBR(MFGSTARPG4) OBJTYPE(*MODULE) +
+                          DBGVIEW(*SOURCE)
+             UPDSRVPGM  SRVPGM(ARCHIT2/MFGADMIN) +
+                          MODULE(ARCHIT2/MFGADRPG1 +
+                          ARCHIT2/MFGADRPG2 ARCHIT2/MFGAPRPG3 +
+                          ARCHIT2/MFGSTARPG4) EXPORT(*ALL) +
+                          SRCFILE(ARCHIT2/QDDSSRC)
+

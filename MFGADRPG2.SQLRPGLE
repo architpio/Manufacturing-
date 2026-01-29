@@ -10,6 +10,8 @@
            Sflctl  Ind Pos(51);
            sflclr  Ind Pos(52);
            Sflend  Ind Pos(53);
+           Optind  Ind Pos(28);
+           Sflnxtchgind Ind Pos(30);
          End-ds;
          Dcl-pr Empcrudproc;
              W_Company    Char  (32);
@@ -24,11 +26,15 @@
          Dcl-s Emprrn      Packed(4:0);
          Dcl-s W_operation Char(1);
          Dcl-s W_empid     Packed(6:0);
+         Dcl-s W_optcheck  Ind;
+         Dcl-s W_id packed(6) dim(9999);
+         Dcl-s W_id1 Packed(6);
          Dcl-Proc Adempproc Export;
            Dcl-pi Adempproc;
              W_Company char(32);
              Pgmname   char(10);
            End-pi;
+           Scrrn=1;
            Empclrsfl();
            Emploadsfl();
            Empdspsfl(W_Company:Pgmname);
@@ -41,6 +47,7 @@
            Emprrn=0;
            Write Mngcemp;
            Sflclr=*Off;
+           Clear W_id;
          End-proc Empclrsfl;
 
          Dcl-proc Emploadsfl;
@@ -48,12 +55,15 @@
            End-pi;
            Exec Sql
              Declare Empcursor Scroll Cursor For
-             Select Empid,Empnam,Empcat,Empsta from MFGT02EMP order by EMPID;
+             Select Empid,Empnam,Emptyp,Empsta from MFGT02EMP
+             Where Empid>100000 order by EMPID;
            Exec Sql Open Empcursor;
+            
            Exec Sql
              Fetch First from Empcursor into :Sempid,:Sempnam,:Sempcat,:Sempsta;
            Dow Sqlcode=0;
              Emprrn=Emprrn+1;
+             W_id(Emprrn)=Sempid;
              If Emprrn>9999;
                Leave;
              Endif;
@@ -80,15 +90,83 @@
              Dhcomp   = W_Company;
              Dhheader = '       Manage Employee';
              Dprognam = Pgmname;
+             Dhopt='2=Update   4=Delete   5=Display';
              Dfooter  = 'F3=Exit   F5=Refresh   F6=Create' ;
              Write Header;
              Write Footer;
              Exfmt Mngcemp;
-             IF Create =*On;
+             If Spos<>*Zeros and Emprrn>1;
+              Exec Sql 
+                Select Empid into :W_id1 from Mfgt02emp where Empid>=:Spos;
+                If W_id1=*Zeros;
+                Scrrn=1;
+                Clear Spos;
+                Else;
+                Scrrn=%lookup(W_id1:W_id);
+                Clear W_id1;
+                Clear Spos;
+                Endif;
+             Endif;
+             Select;
+             When Create =*On;
                W_operation='C';
                Empcrudproc(W_Company:Pgmname:W_operation);
-             Endif;
+               Empclrsfl();
+               Emploadsfl();
+               Create=*Off;
+             Other;
+
+              W_optcheck=*Off;
+             Readc Mngsemp;
+             Dow Not %Eof();
+               Optind=*Off;
+               If Sopt<>*Blanks and Sopt<>'2' and Sopt<>'5';
+                Optind=*On;
+                W_optcheck=*On;
+               Endif;
+              //  If Sopt='5';
+              //   W_empid=Sempid;
+              //   W_operation='D';
+              //   Empcrudproc(W_Company:Pgmname:W_operation:W_empid);
+              //   Sopt=*Blanks;
+              //  Elseif Sopt='2';
+              //    W_empid=Sempid;
+              //    W_operation='U';
+              //    Empcrudproc(W_Company:Pgmname:W_operation:W_empid);
+              //    Sopt=*Blanks;
+              //  Else;
+              //    Derrmsg='Invalid Option';
+              //    Optind=*On;
+              //    W_optcheck='N';
+              //  Endif;
+               Sflnxtchgind=*On;
+               Update Mngsemp;
+               Readc Mngsemp;
+             Enddo;
+              IF W_optcheck=*On;
+                Derrmsg='Invalid Option';
+              Else;
+                Clear Derrmsg;
+                Readc Mngsemp;
+                Dow Not %Eof();
+                If Sopt='5';
+                W_empid=Sempid;
+                W_operation='D';
+                Empcrudproc(W_Company:Pgmname:W_operation:W_empid);
+                Sopt=*Blanks;
+               Elseif Sopt='2';
+                 W_empid=Sempid;
+                 W_operation='U';
+                 Empcrudproc(W_Company:Pgmname:W_operation:W_empid);
+                 Sopt=*Blanks;
+                ENdif;
+                Update Mngsemp;
+                Readc Mngsemp;
+                Enddo;
+              Endif;
+            Endsl;
            Enddo;
            Reset Exit;
          End-proc Empdspsfl;
+
 

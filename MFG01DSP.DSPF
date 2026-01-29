@@ -1,10 +1,9 @@
-     A*%%TS  SD  20260124  130824  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260129  043255  ARCHIT      REL-V7R5M0  5770-WDS
      A*%%EC
      A                                      DSPSIZ(24 80 *DS3)
      A                                      INDARA
      A          R HEADER
-     A*%%TS  SD  20260123  093423  ARCHIT      REL-V7R5M0  5770-WDS
-     A                                      OVERLAY
+     A*%%TS  SD  20260127  091842  ARCHIT      REL-V7R5M0  5770-WDS
      A                                  1  2'User...:'
      A                                      COLOR(WHT)
      A                                  1 11USER
@@ -26,7 +25,8 @@
      A            DFOOTER       65A  O 23  1COLOR(BLU)
      A            DERRMSG       50A  O 24  1COLOR(RED)
      A          R LOGIN
-     A*%%TS  SD  20260123  095016  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260127  091842  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      ALTNAME('y')
      A                                      CA03(03 'Exit')
      A                                      CA05(05 'Refresh')
      A                                      CA09(09 'Forgot Password')
@@ -45,7 +45,7 @@
      A                                 15 36'**********'
      A                                      COLOR(WHT)
      A          R HOME
-     A*%%TS  SD  20260123  191809  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260127  091842  ARCHIT      REL-V7R5M0  5770-WDS
      A                                      CA03(03 'Exit')
      A                                      CA05(05 'Refresh')
      A                                      OVERLAY
@@ -63,12 +63,17 @@
      A            DCHOICE        2S 0B 17 40
      A  14                                  DSPATR(RI)
      A          R EMPCRUD
-     A*%%TS  SD  20260124  124850  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260128  025249  ARCHIT      REL-V7R5M0  5770-WDS
      A                                      CA03(03 'Exit')
      A                                      CA05(05 'Refresh')
      A                                      CF06(06 'Create/Update')
      A                                      CA12(12 'Cancel')
+     A                                      CA04(04 'Prompt')
+     A                                      RTNCSRLOC(&RCD &FLD &POS)
      A                                      OVERLAY
+     A            FLD           10A  H
+     A            RCD           10A  H
+     A            POS            4S 0H
      A                                  7  2'Employee ID.....'
      A                                      COLOR(WHT)
      A                                  9  2'Employee Gender.'
@@ -90,30 +95,38 @@
      A  15                                  DSPATR(RI)
      A  15                                  DSPATR(PC)
      A  26                                  DSPATR(UL)
-     A            DEMPDOB       10A  B 11 19
+     A                                      DSPATR(PR)
+     A            DEMPDOB        8Y 0B 11 19
      A  16                                  DSPATR(RI)
-     A                                      DSPATR(PC)
+     A  16                                  DSPATR(PC)
      A  26                                  DSPATR(UL)
+     A                                      EDTWRD('    -  -  ')
+     A N26                                  DSPATR(PR)
      A            DEMPROL        1A  B 13 19
      A  17                                  DSPATR(RI)
      A  17                                  DSPATR(PC)
      A  26                                  DSPATR(UL)
+     A                                      DSPATR(PR)
      A            DEMPSTA       20A  B 21 19
      A  21                                  DSPATR(RI)
      A  21                                  DSPATR(PC)
      A  26                                  DSPATR(UL)
+     A                                      DSPATR(PR)
      A            DEMPADD       50A  B 17 19
      A  19                                  DSPATR(RI)
      A  19                                  DSPATR(PC)
      A  26                                  DSPATR(UL)
+     A N26                                  DSPATR(PR)
      A            DEMPEMA       30A  B 19 19
      A  20                                  DSPATR(RI)
      A  20                                  DSPATR(PC)
      A  26                                  DSPATR(UL)
+     A N26                                  DSPATR(PR)
      A            DEMPMOB       10S 0B 15 19
      A  18                                  DSPATR(RI)
      A  18                                  DSPATR(PC)
      A  26                                  DSPATR(UL)
+     A N26                                  DSPATR(PR)
      A                                  7 37'Employee Name....'
      A                                      COLOR(WHT)
      A                                  9 37'Employee Age.....'
@@ -124,43 +137,51 @@
      A                                      COLOR(WHT)
      A                                 15 37'Employee Password'
      A                                      COLOR(WHT)
-     A            DEMPNAM       20A  B  7 55
+     A            DEMPNAM       20X  B  7 55
      A  22                                  DSPATR(RI)
      A  22                                  DSPATR(PC)
      A  26                                  DSPATR(UL)
+     A N26                                  DSPATR(PR)
      A            DEMPAGE        2S 0O  9 55
-     A            DEMPPIN        6S 0B 11 55
+     A            DEMPPIN        6Y 0B 11 55
      A  23                                  DSPATR(RI)
      A  23                                  DSPATR(PC)
      A  26                                  DSPATR(UL)
-     A            DEMPDOJ       10A  B 13 55
+     A N26                                  DSPATR(PR)
+     A            DEMPDOJ        8Y 0B 13 55
      A  24                                  DSPATR(RI)
      A  24                                  DSPATR(PC)
      A  26                                  DSPATR(UL)
+     A                                      EDTWRD('    -  -  ')
+     A N26                                  DSPATR(PR)
      A            DEMPPASS      20A  B 15 55
      A  25                                  DSPATR(RI)
      A  25                                  DSPATR(PC)
      A  27                                  DSPATR(UL)
+     A N27                                  DSPATR(PR)
      A                                  9 23'(F4=Prompt)'
      A                                      COLOR(WHT)
-     A  26                                  DSPATR(ND)
+     A  39                                  DSPATR(ND)
      A                                 13 23'(F4=Prompt)'
+     A  39                                  DSPATR(ND)
      A                                      COLOR(WHT)
-     A  26                                  DSPATR(ND)
      A                                 21 41'(F4=Prompt)'
      A                                      COLOR(WHT)
-     A  26                                  DSPATR(ND)
+     A  39                                  DSPATR(ND)
+     A                                 19 51'Employee Status'
+     A                                      COLOR(WHT)
      A          R MNGSEMP                   SFL
-     A*%%TS  SD  20260124  104224  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260129  022659  ARCHIT      REL-V7R5M0  5770-WDS
+     A  30                                  SFLNXTCHG
      A            SOPT           1A  B 11  2
      A  28                                  DSPATR(RI)
      A  28                                  DSPATR(PC)
-     A            SEMPID         6A  O 11  9
+     A            SEMPID         6S 0O 11  9
      A            SEMPNAM       20A  O 11 25
      A            SEMPCAT        1A  O 11 48
-     A            SEMPSTA       10   O 11 69
+     A            SEMPSTA       10A  O 11 69
      A          R MNGCEMP                   SFLCTL(MNGSEMP)
-     A*%%TS  SD  20260124  104224  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260129  022659  ARCHIT      REL-V7R5M0  5770-WDS
      A                                      CA03(03 'Exit')
      A                                      CA05(05 'Refresh')
      A                                      CF06(06 'Create')
@@ -173,11 +194,12 @@
      A  53                                  SFLEND(*MORE)
      A                                      SFLSIZ(9999)
      A                                      SFLPAG(0010)
+     A            SCRRN          4S 0H      SFLRCDNBR(*TOP)
      A                                  6 52'Position To....'
      A            SPOS           6S 0B  6 68
      A                                  7  2'Type Options, Press Enter'
      A                                      COLOR(BLU)
-     A            FLD003        35A  O  8  4COLOR(BLU)
+     A            DHOPT         35A  O  8  4COLOR(BLU)
      A                                 10  2'OPT'
      A                                      COLOR(WHT)
      A                                 10  9'Employee Id'
@@ -197,7 +219,7 @@
      A            SLOCNAM       30A  O 11 25
      A            SLOCSTA        1A  O 11 61
      A          R MNGCLOC                   SFLCTL(MNGSLOC)
-     A*%%TS  SD  20260121  112401  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260128  051230  ARCHIT      REL-V7R5M0  5770-WDS
      A                                      SFLSIZ(9999)
      A                                      SFLPAG(0010)
      A  54                                  SFLDSP
@@ -258,7 +280,7 @@
      A            SPROCAT       20A  O 11 53
      A            SPROSTA        1A  O 11 76
      A          R MNGCPRO                   SFLCTL(MNGSPRO)
-     A*%%TS  SD  20260123  081832  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260128  051230  ARCHIT      REL-V7R5M0  5770-WDS
      A                                      SFLSIZ(9999)
      A                                      SFLPAG(0010)
      A  58                                  SFLDSP
@@ -341,7 +363,7 @@
      A            SBOMQUANT      3S 0O 11 36
      A            SBOMSTAT       1A  O 11 49
      A          R MNGCBOM                   SFLCTL(MNGSBOM)
-     A*%%TS  SD  20260121  120514  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260128  051230  ARCHIT      REL-V7R5M0  5770-WDS
      A                                      SFLSIZ(9999)
      A                                      SFLPAG(0010)
      A  62                                  SFLDSP
@@ -797,3 +819,63 @@
      A            DSTPRTYP      20A  O 11 39
      A            DSTPROSTAT     1A  O 13 39
      A            DSTSTOCO       3S 0B 15 39
+     A          R STASWIN                   SFL
+     A*%%TS  SD  20260128  121838  ARCHIT      REL-V7R5M0  5770-WDS
+     A            WSOPT          1A  B  4  2COMP(EQ 'X')
+     A            WSSTATE       20A  O  4 11
+     A          R STACWIN                   SFLCTL(STASWIN)
+     A*%%TS  SD  20260128  121838  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      CA12(12 'Cancel')
+     A                                      CA05(05 'Refresh')
+     A  40                                  SFLDSP
+     A  41                                  SFLDSPCTL
+     A  42                                  SFLCLR
+     A  43                                  SFLEND(*MORE)
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0010)
+     A                                      WINDOW(3 18 19 30)
+     A                                  1 10'Select State'
+     A                                      COLOR(BLU)
+     A                                  3  2'OPT'
+     A                                      COLOR(WHT)
+     A                                  3 11'State'
+     A                                      COLOR(WHT)
+     A          R EMPTYPWIN
+     A*%%TS  SD  20260128  072852  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      WINDOW(5 24 16 30)
+     A                                      CA12(12 'Cancel')
+     A                                  1  5'Select Employee Type'
+     A                                      COLOR(BLU)
+     A                                  3  1'Type Options,Press Enter'
+     A                                      COLOR(BLU)
+     A                                  5  9'Employee Type'
+     A                                      COLOR(WHT)
+     A                                  6  6'1. Product Manager'
+     A                                  7  6'2. Bom Planner'
+     A                                  8  6'3. Production Supervisor'
+     A                                  9  6'4. Inventory Controller'
+     A                                 11  6'Enter Choice'
+     A                                      COLOR(WHT)
+     A            WCHOICE        1A  B 11 20
+     A                                 13  1'F12=Cancel'
+     A                                      COLOR(BLU)
+     A            WERRMSG       20A  O 14  1COLOR(RED)
+     A          R EMPGENWIN
+     A*%%TS  SD  20260128  072852  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      WINDOW(5 24 14 30)
+     A                                      CA12(12 'Cancel')
+     A                                  1 10'Select Gender'
+     A                                      COLOR(BLU)
+     A                                  3  2'Type Options, Press Enter'
+     A                                      COLOR(BLU)
+     A                                  5 11'Gender'
+     A                                      COLOR(WHT)
+     A                                  6 11'1. Male'
+     A                                  7 11'2. Female'
+     A                                  8 11'3. Others'
+     A                                 10  8'Enter Choice'
+     A                                      COLOR(WHT)
+     A            WCHOICE        1A  B 10 21
+     A                                 12  1'F12=Cancel'
+     A                                      COLOR(BLU)
+     A            WERRMSG       20A  O 13  1COLOR(RED)
