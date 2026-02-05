@@ -21,6 +21,8 @@
            Empund    Ind  Pos(26);
            Passund   Ind  Pos(27);
            Nondsp    Ind  Pos(39);
+           Statund   Ind  Pos(31);
+           Statnondsp Ind Pos(32);
          End-ds;
          Dcl-pr Stateproc;
            W_Company Char(32);
@@ -44,53 +46,79 @@
          Dcl-s W_passcheck Varchar(1);
          Dcl-s W_pass1 Packed(2);
          Dcl-s W_addcheck Varchar(1);
-
+         Dcl-s W_count Packed(6);
 
          Dcl-proc Empcrudproc Export;
            Dcl-pi Empcrudproc;
              W_Company    Char  (32);
              Pgmname      Char  (10);
              W_operation  Char  (1);
+             W_emptyp     Varchar(1);
              W_empid      Packed(6) options(*Nopass);
            End-pi;
-           Dow Exit=*Off;
+           Dow Cancel=*Off;
              Dhcomp   = W_Company;
              Dprognam = Pgmname;
              Select;
                When W_operation='C';
                  Dhheader = '     Create Employee';
-                 Dfooter  = 'F3=Exit   F4=Prompt   F5=Refresh   F6=Create';
+                 Dfooter  = 'F4=Prompt   F5=Refresh   F6=Create   F12=Cancel';
                When W_operation='U';
-                 Dhheader = '       Update Employee';
-                 Dfooter  = 'F3=Exit   F5=Refresh   F6=Update';
+                 Dhheader = '     Update Employee';
+                 Dfooter  = 'F5=Refresh   F6=Update   F12=Cancel';
                When W_operation='D';
                  Dhheader = '     Display Employee';
-                 Dfooter  = 'F3=Exit   ';
+                 Dfooter  = 'F12=Cancel  ';
              Endsl;
              Write Header;
              Write Footer;
             Exec SQL SET Option Commit = *None;
-             If %Parms()=4;
+             If %Parms()=5;
                 If W_check=*Blanks;
                 Exec Sql
                    Select EMpid,Empnam,emppass,empcon,empgen,
                    emptyp,empema,empage,empdob,empdoj,empstaT,
-                   emppin,empadd
+                   emppin,empadd,Empsta
                     into :Dempid,:Dempnam,:Demppass,:Dempmob,
                  :Dempgen,:Demprol,:dempema,:dempage,
-                 :Dempdob,:Dempdoj,:Dempsta,:Demppin,:Dempadd
+                 :Dempdob,:Dempdoj,:Dempsta,:Demppin,:Dempadd,:DEMPSTATUS
                  from Mfgt02emp where Empid=:W_empid;
                  Endif;
                If W_operation='D';
                  Empund  = *Off;
                  Passund = *Off;
                  Nondsp  = *On;
+                 Statnondsp = *On;
+                 Statund    = *Off;
                  Exfmt Empcrud;
+
                 //    :Dempgen,:Demprol,:Demps
                 Else;
+                  IF W_emptyp<>'A';
+                    Empund  = *Off;
+                    Passund = *On;
+                    Nondsp  = *On;
+                    Statnondsp = *On;
+                    Statund    = *Off;
+                    Exfmt Empcrud;
+                    Exsr Checkblankfields;
+                    If W_check='Y';
+                      Exsr Passval;
+                    Endif;
+                    If W_passcheck='Y';
+                      Exec sql
+                       Update Mfgt02Emp set
+                        Emppass=:DEMPPASS
+                        where Empid=:W_empid;
+                      Derrmsg='Account Updated Successfully';
+                      Leave;
+                    Endif;
+                  Else;
                   Empund  = *On;
                   Passund = *On;
                   Nondsp  = *Off;
+                  Statnondsp = *Off;
+                  Statund    = *On;
                   Exfmt Empcrud;
                   If Prompt=*On and Fld='DEMPGEN';
                  Prompt=*Off;
@@ -147,8 +175,44 @@
                   Clear Wchoice;
                   Cancel=*Off;
                Endif;
-                IF Exit=*On;
-                 Exit=*Off;
+               IF Prompt=*On and Fld='DEMPSTATUS';
+                 Dow Cancel=*Off;
+                  Dwhead='Employee Status';
+                  Exfmt Stawin;
+                  IF Wchoice='1';
+                    Dempstatus='A';
+                    Leave;
+                  Elseif Wchoice='2';
+                   IF Demprol='P';
+                   Exec Sql
+                     Select Count(*) into :W_count from Mfgt03pro where
+                      Prsur=:Dempid and Prsta='A';
+                   Elseif Demprol='B';
+                     Exec Sql
+                     Select Count(*) into :W_count from MFGT04Bom where
+                        BOUSR=:Dempid and BOsat='A';
+                   Elseif Demprol='W';
+                     Exec Sql
+                     Select Count(*) into :W_count from Mfgt05Wo where
+                       Wousr=:Dempid and Wosta='A';
+                   Endif;
+                    If W_count>0;
+                      Werrmsg='Record Cannot Be Inactive ';
+                    Else;
+                    Dempstatus='I';
+                    Leave;
+                    Endif;
+                  Else;
+                     Werrmsg='Invalid Choice ';
+                  Endif;
+                 Enddo;
+                 Prompt=*Off;
+                 Cancel=*Off;
+                 Clear wchoice;
+                 Clear werrmsg;
+               Endif;
+                IF Cancel=*On;
+                 Cancel=*Off;
                  Leave;
                Endif;
                IF Refresh=*On;
@@ -178,12 +242,11 @@
                  Exsr Emailval;
                Endif;
                If W_emacheck  = 'N';
-                 Exsr Addval;
-               Endif;
-               IF W_addcheck='Y';
                  Exsr Passval;
                Endif;
                If W_passcheck='Y';
+                  If Creupd=*ON;
+                     Creupd=*oFF;
                  Exec Sql
                    Update Mfgt02emp
                    set Empid=:Dempid,
@@ -198,19 +261,25 @@
                        Empdoj=:Dempdoj,
                        Empstat=:Dempsta,
                        Emppin=:Demppin,
-                       Empadd=:Dempadd
+                       Empadd=:Dempadd,
+                       Empsta=:Dempstatus
                   where Empid=:W_empid;
                  Dsply Sqlcode;
                  Leave;
+                 ENDIF;
                  Endif;
+               Endif;
                Endif;
                Endif;
              Else;
                Exsr Autoincempid;
-               Empund  = *On;
-               Passund = *On;
-               Nondsp  = *Off;
-               Dempid  = W_autoid;
+               Empund     = *On;
+               Passund    = *On;
+               Nondsp     = *Off;
+               Statnondsp = *On;
+               Statund    = *Off;
+               Dempid     = W_autoid;
+               Dempstatus = 'A';
                Exfmt EMPCRUD;
                If Prompt=*On and Fld='DEMPGEN';
                  Prompt=*Off;
@@ -233,12 +302,11 @@
                  Enddo;
                  Clear Werrmsg;
                  Clear Wchoice;
-                 Cancel=*On;
+                 Cancel=*Off;
                Endif;
                If Prompt=*On and Fld='DEMPSTA';
                  Prompt=*Off;
                  Stateproc(W_Company:Pgmname:W_state);
-                 Dsply W_State;
                  Dempsta=W_state;
                Endif;
                If Prompt=*On and Fld='DEMPROL';
@@ -267,8 +335,8 @@
                   Clear Wchoice;
                   Cancel=*Off;
                Endif;
-               IF Exit=*On;
-                 Exit=*Off;
+               IF Cancel=*On;
+                 Cancel=*Off;
                  Leave;
                Endif;
                IF Refresh=*On;
@@ -281,20 +349,25 @@
                 eXSR Nameval;
                  Exsr Dobvalidate;
                Endif;
-               If W_dobcheck  = 'Y';
+               If W_dobcheck  = 'Y' and W_check='Y';
                  Exsr Dojvalidate;
                Endif;
-               If W_dojcheck  = 'Y';
+               If W_dojcheck  = 'Y' and W_check='Y' and W_dobcheck='Y';
                 Exsr Mobilenumval;
                Endif;
-               If W_mobcheck  = 'Y';
+               If W_mobcheck  = 'Y' and  W_dojcheck  = 'Y' and W_check='Y' 
+                 and W_dobcheck='Y';
                  Exsr Emailval;
                Endif;
-               If W_emacheck  = 'N';
+               If W_emacheck  = 'N' and W_mobcheck  = 'Y' and W_dojcheck  = 'Y' 
+                   and W_check='Y' and W_dobcheck='Y';
                  Exsr Passval;
                Endif;
 
-               If W_passcheck='Y';
+               If W_passcheck='Y' and W_emacheck  = 'N' and W_mobcheck  = 'Y' 
+                 and W_dojcheck  = 'Y' and W_check='Y'  and W_dojcheck  = 'Y' 
+                  and Creupd=*On;
+                 Creupd=*Off;
                  Exec Sql
                  Insert into Mfgt02emp
                  values(:Dempid,:Dempnam,:Demppass,:Dempmob,
@@ -310,7 +383,7 @@
            Enddo;
            Exsr ClearFields;
            Exsr Turnoffrp;
-           Reset Exit;
+           Reset Cancel;
            Clear W_check;
            Clear W_dobcheck;
            Clear W_dojcheck;
@@ -417,12 +490,12 @@
                  W_check='N';
                Elseif Demppin<100000;
                  Exsr Turnoffrp;
-                 Empgenrp=*On;
+                 Emppinrp=*On;
                  Derrmsg='Pin Number is Not Valid';
                  W_check='N';
                Elseif Dempmob<6000000000;
                  Exsr Turnoffrp;
-                 Empnamrp=*On;
+                 Empmobrp=*On;
                  Derrmsg='Mobile Number is Not Valid';
                  W_check='N';
                Else;
@@ -440,7 +513,7 @@
                  Else;
                    Exec Sql
                    Values  Year(CURRENT_DATE) - Year(:DEmpdob) into :Dempage;
-                   If Dempage<18;
+                   If Dempage<18 or Dempage>99;
                      Dempage=*Zeros;
                      Empdobrp=*On;
                      Derrmsg='Employee Age should be greater than 18';
@@ -462,7 +535,7 @@
                Else;
                  Exec Sql
                    Values  Year(:Dempdoj) - Year(:DEmpdob) into :W_age;
-                   If W_age<18;
+                   If W_age<18 ;
                      Empdojrp=*On;
                      Derrmsg='Date of Join Cannot be ' +
                       'Greater than Date of Birth';
@@ -557,17 +630,17 @@
 
            Begsr Nameval;
                W_pos1=1;
-               Dou W_pos1=0;             
-                 Dempnam=%trim(Dempnam);   
+               Dou W_pos1=0;
+                 Dempnam=%trim(Dempnam);
                  W_pos1= %scan(' ':Dempnam);
                  W_name=W_name+' '+%subst(dEMPNAM:1:W_Pos1-1);
-                 Dempnam=%subst(dEMPNAM:W_pos1+1); 
-                 If %len(%trim(Dempnam))=0;    
-                   leave;                   
-                 endif;                    
-              enddo; 
-              Dempnam=%trim(W_name);   
-              Clear W_name;                   
+                 Dempnam=%subst(dEMPNAM:W_pos1+1);
+                 If %len(%trim(Dempnam))=0;
+                   leave;
+                 endif;
+              enddo;
+              Dempnam=%trim(W_name);
+              Clear W_name;
            Endsr;
 
            Begsr Addval;
