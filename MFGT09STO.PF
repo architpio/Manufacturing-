@@ -1,0 +1,7 @@
+                                            REF(MFGT03PRO)
+                R MFGT9STO
+                  PRID      R               REFFLD(PRID)
+                  PRNAM     R               REFFLD(PRNAM)
+                  PRCAT     R               REFFLD(PRCAT)
+                  PRCOUNT        3S 0
+                K PRID

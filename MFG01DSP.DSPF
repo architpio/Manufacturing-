@@ -1,24 +1,24 @@
-     A*%%TS  SD  20260129  043255  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260206  104307  ARCHIT      REL-V7R5M0  5770-WDS
      A*%%EC
      A                                      DSPSIZ(24 80 *DS3)
      A                                      INDARA
      A          R HEADER
      A*%%TS  SD  20260127  091842  ARCHIT      REL-V7R5M0  5770-WDS
-     A                                  1  2'User...:'
+     A                                  2  2'User...:'
      A                                      COLOR(WHT)
-     A                                  1 11USER
-     A            DHCOMP        32A  O  1 25COLOR(BLU)
-     A                                  1 67'Date:'
+     A                                  2 11USER
+     A            DHCOMP        32A  O  2 25COLOR(BLU)
+     A                                  2 67'Date:'
      A                                      COLOR(WHT)
-     A                                  1 73DATE
+     A                                  2 73DATE
      A                                      EDTCDE(Y)
-     A                                  2 67'Time:'
+     A                                  3 67'Time:'
      A                                      COLOR(WHT)
-     A                                  2 73TIME
-     A            DHHEADER      25A  O  2 28COLOR(WHT)
-     A                                  2  2'Program:'
+     A                                  3 73TIME
+     A            DHHEADER      25A  O  3 28COLOR(WHT)
+     A                                  3  2'Program:'
      A                                      COLOR(WHT)
-     A            DPROGNAM      10A  O  2 11
+     A            DPROGNAM      10A  O  3 11
      A          R FOOTER
      A*%%TS  SD  20260123  093423  ARCHIT      REL-V7R5M0  5770-WDS
      A                                      OVERLAY
@@ -63,7 +63,7 @@
      A            DCHOICE        2S 0B 17 40
      A  14                                  DSPATR(RI)
      A          R EMPCRUD
-     A*%%TS  SD  20260128  025249  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260202  185452  ARCHIT      REL-V7R5M0  5770-WDS
      A                                      CA03(03 'Exit')
      A                                      CA05(05 'Refresh')
      A                                      CF06(06 'Create/Update')
@@ -166,22 +166,34 @@
      A  39                                  DSPATR(ND)
      A                                      COLOR(WHT)
      A                                 21 41'(F4=Prompt)'
-     A                                      COLOR(WHT)
      A  39                                  DSPATR(ND)
+     A                                      COLOR(WHT)
      A                                 19 51'Employee Status'
      A                                      COLOR(WHT)
+     A            DEMPSTATUS     1   B 19 67
+     A  31                                  DSPATR(UL)
+     A N31                                  DSPATR(PR)
+     A                                 19 69'(F4=Prompt)'
+     A                                      COLOR(WHT)
+     A  32                                  DSPATR(ND)
      A          R MNGSEMP                   SFL
-     A*%%TS  SD  20260129  022659  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260203  033136  ARCHIT      REL-V7R5M0  5770-WDS
      A  30                                  SFLNXTCHG
      A            SOPT           1A  B 11  2
      A  28                                  DSPATR(RI)
      A  28                                  DSPATR(PC)
      A            SEMPID         6S 0O 11  9
-     A            SEMPNAM       20A  O 11 25
-     A            SEMPCAT        1A  O 11 48
+     A  31                                  COLOR(RED)
+     A            SEMPNAM       20A  O 11 23
+     A  31                                  COLOR(RED)
+     A            SEMPCAT       21A  O 11 46
+     A  31                                  COLOR(RED)
      A            SEMPSTA       10A  O 11 69
+     A  31                                  COLOR(RED)
      A          R MNGCEMP                   SFLCTL(MNGSEMP)
-     A*%%TS  SD  20260129  022659  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260203  032101  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0010)
      A                                      CA03(03 'Exit')
      A                                      CA05(05 'Refresh')
      A                                      CF06(06 'Create')
@@ -192,8 +204,6 @@
      A  51                                  SFLDSPCTL
      A  52                                  SFLDLT
      A  53                                  SFLEND(*MORE)
-     A                                      SFLSIZ(9999)
-     A                                      SFLPAG(0010)
      A            SCRRN          4S 0H      SFLRCDNBR(*TOP)
      A                                  6 52'Position To....'
      A            SPOS           6S 0B  6 68
@@ -204,14 +214,15 @@
      A                                      COLOR(WHT)
      A                                 10  9'Employee Id'
      A                                      COLOR(WHT)
-     A                                 10 25'Employee Name'
+     A                                 10 23'Employee Name'
      A                                      COLOR(WHT)
-     A                                 10 48'Employee Category'
+     A                                 10 46'Employee Category'
      A                                      COLOR(WHT)
      A                                 10 69'Status'
      A                                      COLOR(WHT)
      A          R MNGSLOC                   SFL
-     A*%%TS  SD  20260123  083434  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260203  031132  ARCHIT      REL-V7R5M0  5770-WDS
+     A  30                                  SFLNXTCHG
      A            SOPT           1A  B 11  2
      A  28                                  DSPATR(RI)
      A  28                                  DSPATR(PC)
@@ -219,18 +230,24 @@
      A            SLOCNAM       30A  O 11 25
      A            SLOCSTA        1A  O 11 61
      A          R MNGCLOC                   SFLCTL(MNGSLOC)
-     A*%%TS  SD  20260128  051230  ARCHIT      REL-V7R5M0  5770-WDS
-     A                                      SFLSIZ(9999)
-     A                                      SFLPAG(0010)
+     A*%%TS  SD  20260204  040936  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      CA05(05 'Refresh')
+     A                                      CA12(12 'Cancel')
+     A                                      CF06(06 'Create')
+     A                                      CA07(07 'Active/Inactive')
+     A                                      OVERLAY
      A  54                                  SFLDSP
      A  55                                  SFLDSPCTL
      A  56                                  SFLCLR
      A  57                                  SFLEND(*MORE)
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0010)
+     A            SLOCRRN        4S 0H      SFLRCDNBR(*TOP)
      A                                  6 52'Position To....'
      A            SPOS           6S 0B  6 68
      A                                  7  2'Type Options, Press Enter'
      A                                      COLOR(BLU)
-     A            FLD003        35A  O  8  4COLOR(BLU)
+     A            DHOPT         35A  O  8  4COLOR(BLU)
      A                                 10  2'OPT'
      A                                      COLOR(WHT)
      A                                 10  9'Location Id'
@@ -240,7 +257,16 @@
      A                                 10 61'Status'
      A                                      COLOR(WHT)
      A          R LOCCRUD
-     A*%%TS  SD  20260123  081832  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260203  134757  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      CA05(05 'REFRESH')
+     A                                      CF06(06 'CREATE')
+     A                                      CA12(12 'CANCEL')
+     A                                      CA04(04 'PROMPT')
+     A                                      RTNCSRLOC(&RCD &FLD &POS)
+     A                                      OVERLAY
+     A            FLD           10A  H
+     A            RCD           10A  H
+     A            POS            4S 0H
      A                                  7 27'Location  Id....'
      A                                      COLOR(WHT)
      A                                  9 27'Location Name...'
@@ -256,60 +282,83 @@
      A  15                                  DSPATR(RI)
      A  26                                  DSPATR(UL)
      A  15                                  DSPATR(PC)
+     A N26                                  DSPATR(PR)
      A            DLOCPIN        6S 0B 11 44
      A  16                                  DSPATR(RI)
      A  26                                  DSPATR(UL)
      A  16                                  DSPATR(PC)
+     A N26                                  DSPATR(PR)
      A            DLOCSTA       20A  B 13 44
      A  17                                  DSPATR(RI)
      A  26                                  DSPATR(UL)
      A  17                                  DSPATR(PC)
+     A N26                                  DSPATR(PR)
      A            DLOCSTAT       1A  B 15 44
      A  18                                  DSPATR(RI)
-     A  26                                  DSPATR(UL)
+     A  25                                  DSPATR(UL)
      A  18                                  DSPATR(PC)
-     A                                 15 49'(F4=Prompt)'
-     A                                      COLOR(BLU)
+     A N25                                  DSPATR(PR)
+     A                                 15 47'(F4=Prompt)'
+     A                                      COLOR(WHT)
+     A  20                                  DSPATR(ND)
+     A                                 13 66'(F4=Prompt)'
+     A                                      COLOR(WHT)
+     A  19                                  DSPATR(ND)
      A          R MNGSPRO                   SFL
-     A*%%TS  SD  20260123  083434  ARCHIT      REL-V7R5M0  5770-WDS
-     A            SOPT           1A  B 11  2
+     A*%%TS  SD  20260204  152447  ARCHIT      REL-V7R5M0  5770-WDS
+     A            SOPT           1A  B 12  2
      A  28                                  DSPATR(RI)
      A  28                                  DSPATR(PC)
-     A            SPROID         6A  O 11  7
-     A            SPRONAM       30A  O 11 20
-     A            SPROCAT       20A  O 11 53
-     A            SPROSTA        1A  O 11 76
+     A            SPROID         6A  O 12  7
+     A            SPRONAM       30A  O 12 20
+     A            SPROCAT       20A  O 12 53
+     A            SPROSTA        1A  O 12 76
      A          R MNGCPRO                   SFLCTL(MNGSPRO)
-     A*%%TS  SD  20260128  051230  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260206  104307  ARCHIT      REL-V7R5M0  5770-WDS
      A                                      SFLSIZ(9999)
-     A                                      SFLPAG(0010)
+     A                                      SFLPAG(0009)
+     A                                      CA12(12 'Cancel')
+     A                                      CA05(05 'Refresh')
+     A                                      CA07(07 'Actinact')
+     A                                      CF06(06 'Create')
+     A                                      OVERLAY
      A  58                                  SFLDSP
      A  59                                  SFLDSPCTL
      A  60                                  SFLCLR
      A  61                                  SFLEND(*MORE)
-     A                                  6 52'Position To....'
-     A            SPOS           6S 0B  6 68
-     A                                  7  2'Type Options, Press Enter'
+     A            SPRORRN        4S 0H      SFLRCDNBR(*TOP)
+     A                                  6 54'Position To....'
+     A            SPOS           6S 0B  6 70
+     A                                  8  2'Type Options, Press Enter'
      A                                      COLOR(BLU)
-     A            FLD003        35A  O  8  4COLOR(BLU)
-     A                                 10  2'OPT'
+     A            DHOPT         35A  O  9  4COLOR(BLU)
+     A                                 11  2'OPT'
      A                                      COLOR(WHT)
-     A                                 10  7'Product Id'
+     A                                 11  7'Product Id'
      A                                      COLOR(WHT)
-     A                                 10 20'Product Name'
+     A                                 11 20'Product Name'
      A                                      COLOR(WHT)
-     A                                 10 74'Status'
+     A                                 11 74'Status'
      A                                      COLOR(WHT)
-     A                                 10 53'Product Category'
+     A                                 11 53'Product Category'
      A                                      COLOR(WHT)
-     A                                  4  2'Product Name....'
+     A                                  5  2'Product Name....'
      A                                      COLOR(WHT)
-     A                                  5  2'Product Category'
+     A                                  6  2'Product Category'
      A                                      COLOR(WHT)
-     A            SPRONAM       30A  B  4 19
-     A            SPROCAT       20A  B  5 19
+     A            SFPRONAM      30A  B  5 19
+     A            SFPROCAT      20A  B  6 19
      A          R PROCRUD
-     A*%%TS  SD  20260123  081832  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260206  025546  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      CA04(04 'Prompt')
+     A                                      CA05(05 'Refresh')
+     A                                      CF06(06 'Create')
+     A                                      CA12(12 'Cancel')
+     A                                      RTNCSRLOC(&RCD &FLD &POS)
+     A                                      OVERLAY
+     A            FLD           10A  H
+     A            RCD           10A  H
+     A            POS            4S 0H
      A                                  7 11'Product Id.........'
      A                                      COLOR(WHT)
      A                                  9 11'Product Name.......'
@@ -324,20 +373,23 @@
      A                                      COLOR(WHT)
      A                                 19 11'Created By.........'
      A                                      COLOR(WHT)
-     A            DPROID         6A  O  7 31
+     A            DPROID         6S 0O  7 31
      A            DPRONAM       30A  B  9 31
      A  15                                  DSPATR(RI)
      A  26                                  DSPATR(UL)
      A  15                                  DSPATR(PC)
+     A N26                                  DSPATR(PR)
      A            DPROTYP       20A  B 11 31
      A  16                                  DSPATR(RI)
      A  26                                  DSPATR(UL)
      A  16                                  DSPATR(PC)
+     A                                      DSPATR(PR)
      A            DPROSTAT       1A  B 13 31
      A  17                                  DSPATR(RI)
-     A  26                                  DSPATR(UL)
+     A  25                                  DSPATR(UL)
      A  17                                  DSPATR(PC)
-     A            DPROLOC        6A  B 15 31
+     A N25                                  DSPATR(PR)
+     A            DPROLOC        6S 0B 15 31
      A  18                                  DSPATR(RI)
      A  26                                  DSPATR(UL)
      A  18                                  DSPATR(PC)
@@ -345,14 +397,17 @@
      A  19                                  DSPATR(RI)
      A  26                                  DSPATR(UL)
      A  19                                  DSPATR(PC)
-     A            DPROCRT        6S 0B 19 31
-     A  20                                  DSPATR(RI)
-     A  27                                  DSPATR(UL)
-     A  20                                  DSPATR(PC)
+     A N26                                  DSPATR(PR)
+     A            DPROCRT        6S 0O 19 31
      A                                 15 41'(F4=Prompt)'
-     A                                      COLOR(BLU)
+     A                                      COLOR(WHT)
+     A  21                                  DSPATR(ND)
      A                                 13 37'(F4=Prompt)'
-     A                                      COLOR(BLU)
+     A                                      COLOR(WHT)
+     A  24                                  DSPATR(ND)
+     A                                 11 55'(F4=Prompt)'
+     A                                      COLOR(WHT)
+     A  21                                  DSPATR(ND)
      A          R MNGSBOM                   SFL
      A*%%TS  SD  20260123  083434  ARCHIT      REL-V7R5M0  5770-WDS
      A            SOPT           1A  B 11  2
@@ -552,8 +607,9 @@
      A  20                                  DSPATR(RI)
      A  20                                  DSPATR(PC)
      A          R STAWIN
-     A*%%TS  SD  20260123  085342  ARCHIT      REL-V7R5M0  5770-WDS
-     A                                      WINDOW(6 24 12 30)
+     A*%%TS  SD  20260203  051404  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      WINDOW(6 24 13 30)
+     A                                      CA12(12 'Cancel')
      A                                  1 10'Select Status'
      A                                      COLOR(BLU)
      A                                  3  3'Type Options, Press Enter'
@@ -563,12 +619,16 @@
      A                                  7  7'2. Inactive'
      A                                  9  7'Enter Choice'
      A                                      COLOR(WHT)
-     A            DWCHO          1A  B  9 20
+     A            WCHOICE        1A  B  9 20
      A  14                                  DSPATR(RI)
      A  14                                  DSPATR(PC)
+     A                                 11  1'F12=Cancel'
+     A                                      COLOR(BLU)
+     A            WERRMSG       25A  O 12  1COLOR(RED)
      A          R PROTWIN
-     A*%%TS  SD  20260123  085000  ARCHIT      REL-V7R5M0  5770-WDS
-     A                                      WINDOW(6 24 12 30)
+     A*%%TS  SD  20260205  044511  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      CA12(12 'Cancel')
+     A                                      WINDOW(6 24 14 30)
      A                                  1  7'Select Product Type'
      A                                      COLOR(BLU)
      A                                  3  4'Type Options,Press Enter'
@@ -581,6 +641,10 @@
      A                                 10  9'Enter Choice'
      A                                      COLOR(WHT)
      A            DWCHO          1A  B 10 22
+     A  23                                  DSPATR(RI)
+     A                                 12  1'F12=Cancel'
+     A                                      COLOR(BLU)
+     A            DWERRMSG      25A  O 13  1COLOR(RED)
      A          R WOSWIN
      A*%%TS  SD  20260123  082545  ARCHIT      REL-V7R5M0  5770-WDS
      A                                      WINDOW(6 24 12 30)
@@ -820,11 +884,11 @@
      A            DSTPROSTAT     1A  O 13 39
      A            DSTSTOCO       3S 0B 15 39
      A          R STASWIN                   SFL
-     A*%%TS  SD  20260128  121838  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260205  045103  ARCHIT      REL-V7R5M0  5770-WDS
      A            WSOPT          1A  B  4  2COMP(EQ 'X')
      A            WSSTATE       20A  O  4 11
      A          R STACWIN                   SFLCTL(STASWIN)
-     A*%%TS  SD  20260128  121838  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260205  045103  ARCHIT      REL-V7R5M0  5770-WDS
      A                                      CA12(12 'Cancel')
      A                                      CA05(05 'Refresh')
      A  40                                  SFLDSP
@@ -841,7 +905,7 @@
      A                                  3 11'State'
      A                                      COLOR(WHT)
      A          R EMPTYPWIN
-     A*%%TS  SD  20260128  072852  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260203  053308  ARCHIT      REL-V7R5M0  5770-WDS
      A                                      WINDOW(5 24 16 30)
      A                                      CA12(12 'Cancel')
      A                                  1  5'Select Employee Type'
@@ -859,9 +923,9 @@
      A            WCHOICE        1A  B 11 20
      A                                 13  1'F12=Cancel'
      A                                      COLOR(BLU)
-     A            WERRMSG       20A  O 14  1COLOR(RED)
+     A            WERRMSG       25A  O 14  1COLOR(RED)
      A          R EMPGENWIN
-     A*%%TS  SD  20260128  072852  ARCHIT      REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20260203  053308  ARCHIT      REL-V7R5M0  5770-WDS
      A                                      WINDOW(5 24 14 30)
      A                                      CA12(12 'Cancel')
      A                                  1 10'Select Gender'
@@ -878,4 +942,67 @@
      A            WCHOICE        1A  B 10 21
      A                                 12  1'F12=Cancel'
      A                                      COLOR(BLU)
-     A            WERRMSG       20A  O 13  1COLOR(RED)
+     A            WERRMSG       25A  O 13  1COLOR(RED)
+     A          R EMPSDEL                   SFL
+     A*%%TS  SD  20260130  065603  ARCHIT      REL-V7R5M0  5770-WDS
+     A            SEDEMPID       6S 0O 11  3
+     A            SDEMPNAM      20A  O 11 19
+     A            SDEMPCAT       1A  O 11 47
+     A          R EMPCDEL                   SFLCTL(EMPSDEL)
+     A*%%TS  SD  20260202  124147  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      CA12(12 'Cancel')
+     A                                      CA03(03 'Exit')
+     A                                      OVERLAY
+     A  44                                  SFLDSP
+     A  45                                  SFLDSPCTL
+     A  46                                  SFLCLR
+     A  47                                  SFLEND(*MORE)
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0010)
+     A                                  7  2'Press Enter to confirm your choice-
+     A                                      s for Delete.'
+     A                                      COLOR(BLU)
+     A                                  8  2'Press F12=Cancel to return to your-
+     A                                       choices'
+     A                                      COLOR(BLU)
+     A                                 10  3'Employee Id'
+     A                                      COLOR(WHT)
+     A                                 10 19'Employee Name'
+     A                                      COLOR(WHT)
+     A                                 10 47'Employee Category'
+     A                                      COLOR(WHT)
+     A          R LOCSWIN                   SFL
+     A*%%TS  SD  20260206  020504  ARCHIT      REL-V7R5M0  5770-WDS
+     A            SWOPT          1A  B  7  3COMP(EQ 'X')
+     A            WSLOCID        6S 0O  7 12
+     A            WSLOCNAM      20A  O  7 29
+     A          R LOCCWIN                   SFLCTL(LOCSWIN)
+     A*%%TS  SD  20260206  015715  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      CA12(12 'Cancel')
+     A                                      OVERLAY
+     A  50                                  SFLDSP
+     A  51                                  SFLDSPCTL
+     A  52                                  SFLCLR
+     A  53                                  SFLEND(*MORE)
+     A                                      SFLSIZ(9999)
+     A                                      SFLPAG(0008)
+     A                                      WINDOW(WFOOTER)
+     A                                  2 17'Select Location Id'
+     A                                      COLOR(BLU)
+     A                                  3  2'Type Option, Press Enter'
+     A                                      COLOR(BLU)
+     A                                  4  4'X=Select'
+     A                                      COLOR(BLU)
+     A                                  6  3'OPT'
+     A                                      COLOR(WHT)
+     A                                  6 12'Location Id'
+     A                                      COLOR(WHT)
+     A                                  6 29'Location Name'
+     A                                      COLOR(WHT)
+     A          R WFOOTER
+     A*%%TS  SD  20260206  004019  ARCHIT      REL-V7R5M0  5770-WDS
+     A                                      WINDOW(2 18 20 55)
+     A                                      OVERLAY
+     A                                 18  2'F12=Cancel'
+     A                                      COLOR(BLU)
+
